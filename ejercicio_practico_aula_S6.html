@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller Práctico: Teoría U & Liderazgo Empático</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandRed: '#E60000',
+                        brandRedDark: '#B30000',
+                        brandRedLight: '#FFF0F0',
+                        brandDark: '#111827',
+                        brandGrayBg: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0F172A;
+            font-family: 'Inter', sans-serif;
+        }
+        .landscape-container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E60000;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="text-slate-800 p-3 md:p-6 min-h-screen flex flex-col justify-between">
+
+    <!-- MAIN CONTAINER -->
+    <div class="landscape-container bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200 flex flex-col my-auto w-full">
+        
+        <!-- HEADER INSTITUCIONAL -->
+        <header class="bg-brandDark text-white px-6 py-4 border-b-4 border-brandRed flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center space-x-4">
+                <div class="bg-brandRed text-white p-3 rounded-xl font-bold font-heading text-2xl tracking-wider shadow-lg flex items-center justify-center w-12 h-12">
+                    U
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-brandRed/20 text-brandRed text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-widest border border-brandRed/30">
+                            Empatía Para Resolver • Actividad Dinámica
+                        </span>
+                        <span class="text-slate-400 text-xs font-semibold">Ejercicio en Clase</span>
+                    </div>
+                    <h1 class="text-xl md:text-2xl font-black font-heading tracking-tight mt-0.5">
+                        TEORÍA U <span class="text-brandRed font-normal">| Taller Práctico de Liderazgo Empático</span>
+                    </h1>
+                </div>
+            </div>
+
+            <!-- TAB NAVIGATION / WORKSHOP STEPS -->
+            <div class="flex flex-wrap bg-slate-800 p-1.5 rounded-xl border border-slate-700 text-xs md:text-sm font-medium gap-1">
+                <button onclick="switchTab('case')" id="tab-case" class="tab-btn px-3.5 py-2 rounded-lg transition-all duration-200 bg-brandRed text-white font-semibold shadow flex items-center">
+                    <i class="fa-solid fa-briefcase mr-2"></i>1. Caso Práctico (Carlos)
+                </button>
+                <button onclick="switchTab('listening')" id="tab-listening" class="tab-btn px-3.5 py-2 rounded-lg text-slate-300 hover:text-white transition-all duration-200 flex items-center">
+                    <i class="fa-solid fa-ear-listen mr-2"></i>2. Reto: Escucha
+                </button>
+                <button onclick="switchTab('mapping')" id="tab-mapping" class="tab-btn px-3.5 py-2 rounded-lg text-slate-300 hover:text-white transition-all duration-200 flex items-center">
+                    <i class="fa-solid fa-diagram-project mr-2"></i>3. Reto: Mapeo U
+                </button>
+                <button onclick="switchTab('canvas')" id="tab-canvas" class="tab-btn px-3.5 py-2 rounded-lg text-slate-300 hover:text-white transition-all duration-200 flex items-center">
+                    <i class="fa-solid fa-pen-to-square mr-2"></i>4. Canvas Estudiantil
+                </button>
+            </div>
+        </header>
+
+        <!-- SUBHEADER BANNER -->
+        <div class="bg-brandRedLight border-b border-brandRed/10 px-6 py-2.5 flex flex-wrap items-center justify-between text-xs font-medium text-slate-700 gap-2">
+            <div class="flex items-center space-x-2 text-brandRed font-bold">
+                <i class="fa-solid fa-graduation-cap text-base"></i>
+                <span>Instrucción: Completa las secciones en orden para presentar los resultados de tu equipo.</span>
+            </div>
+            <div class="flex items-center space-x-3 text-xs font-semibold text-slate-600">
+                <span class="bg-white px-2 py-0.5 rounded border border-slate-200"><i class="fa-solid fa-brain text-brandRed mr-1"></i> Mente Abierta</span>
+                <span class="bg-white px-2 py-0.5 rounded border border-slate-200"><i class="fa-solid fa-heart text-brandRed mr-1"></i> Corazón Abierto</span>
+                <span class="bg-white px-2 py-0.5 rounded border border-slate-200"><i class="fa-solid fa-compass text-brandRed mr-1"></i> Voluntad Abierta</span>
+            </div>
+        </div>
+
+        <!-- MAIN VIEW WORKSPACE -->
+        <main class="p-6 bg-slate-50 min-h-[560px] flex flex-col justify-center">
+
+            <!-- ================= SECTION 1: CASO PRÁCTICO (CARLOS) ================= -->
+            <div id="sec-case" class="sec-panel transition-all duration-300">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                    
+                    <!-- LEFT COLUMN: CONTEXT & PROBLEM (7 COLS) -->
+                    <div class="lg:col-span-7 bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-red-100 text-brandRed text-xs font-bold px-3 py-1 rounded-full uppercase border border-red-200">
+                                    Caso de Estudio Práctico • Sector FinTech & Servicios
+                                </span>
+                                <span class="text-xs text-slate-400 font-semibold"><i class="fa-regular fa-clock mr-1"></i> Lectura: 3 min</span>
+                            </div>
+
+                            <h2 class="text-2xl font-black text-slate-900 font-heading mb-3">
+                                El Desafío de Carlos: <span class="text-brandRed">Entre las Métricas Rígidas y el Clima en Crisis</span>
+                            </h2>
+
+                            <div class="space-y-3 text-sm text-slate-600 leading-relaxed">
+                                <p class="bg-slate-50 p-3 rounded-xl border-l-4 border-brandRed text-slate-700">
+                                    <strong>Contexto:</strong> Carlos es Gerente de Atención Digital en un banco. En el último año, las quejas de clientes por cobros indebidos y demoras aumentaron un 40%. La dirección general exige reducir el tiempo de llamada a máximo <strong>3 minutos por cliente</strong> para recortar costos.
+                                </p>
+                                
+                                <p>
+                                    <strong>La Reacción Inicial (Liderazgo Automático):</strong> Carlos reaccionó imponiendo un sistema de sanciones para los asesores que sobrepasaran los 3 minutos por llamada. Instaló un cronómetro visible en las pantallas de los ejecutivos y exigió reportes diarios de eficiencia.
+                                </p>
+
+                                <div class="bg-amber-50 p-3 rounded-xl border border-amber-200 text-xs text-amber-900">
+                                    <strong>El Quiebre:</strong> A los 3 meses, la rotación de personal se disparó al 35%, los asesores colgaban llamadas a clientes para no ser sancionados, y las quejas se duplicaron. Durante una supervisión, una asesora experimentada le dijo entre lágrimas:
+                                    <em class="block mt-1 font-serif text-slate-800 text-sm">"Nos piden empoderar al cliente, pero nos tratan como robots. Nadie escucha por qué los problemas del sistema bancario son cada vez más complejos."</em>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KEY POINTS GRID -->
+                        <div class="mt-4 pt-4 border-t border-slate-100 grid grid-cols-3 gap-3 text-center">
+                            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                                <span class="block text-slate-400 font-bold text-xs uppercase"><i class="fa-solid fa-gauge-high text-red-500 mr-1"></i> Sintoma</span>
+                                <span class="text-xs font-semibold text-slate-800">Cifras en rojo & burnout</span>
+                            </div>
+                            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                                <span class="block text-slate-400 font-bold text-xs uppercase"><i class="fa-solid fa-triangle-exclamation text-amber-500 mr-1"></i> Falla</span>
+                                <span class="text-xs font-semibold text-slate-800">Control sin empatía</span>
+                            </div>
+                            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                                <span class="block text-brandRed font-bold text-xs uppercase"><i class="fa-solid fa-arrow-right-rotate mr-1"></i> Oportunidad</span>
+                                <span class="text-xs font-bold text-brandRed">Aplicar Teoría U</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: QUESTIONS TO REFLECT (5 COLS) -->
+                    <div class="lg:col-span-5 bg-brandDark text-white p-6 rounded-2xl shadow-md border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-2 text-brandRed mb-3">
+                                <i class="fa-solid fa-lightbulb text-xl"></i>
+                                <span class="text-xs font-bold uppercase tracking-wider">Preguntas Guía para el Equipo</span>
+                            </div>
+                            <h3 class="text-lg font-bold font-heading mb-4 text-white">Reflexión Inicial en Grupo:</h3>
+
+                            <ul class="space-y-4 text-xs md:text-sm text-slate-300">
+                                <li class="flex items-start">
+                                    <span class="bg-brandRed text-white font-bold rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3 flex-shrink-0 mt-0.5">1</span>
+                                    <span>¿Por qué la respuesta automática de Carlos (medir y sancionar) empeoró el problema en lugar de resolverlo?</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="bg-brandRed text-white font-bold rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3 flex-shrink-0 mt-0.5">2</span>
+                                    <span>¿En qué nivel de escucha estaba operando Carlos al inicio del caso?</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="bg-brandRed text-white font-bold rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3 flex-shrink-0 mt-0.5">3</span>
+                                    <span>¿Cómo podría Carlos transitar por la "U" para co-crear una solución sostenible con su equipo?</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-800">
+                            <button onclick="switchTab('listening')" class="w-full bg-brandRed hover:bg-brandRedDark text-white font-bold py-3 px-4 rounded-xl shadow-lg transition-colors flex items-center justify-center">
+                                Ir al Ejercicio 1: Clasificar Escucha <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ================= SECTION 2: RETO ESCUCHA ================= -->
+            <div id="sec-listening" class="sec-panel hidden transition-all duration-300">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="flex flex-wrap justify-between items-center mb-4 border-b border-slate-100 pb-3 gap-2">
+                        <div>
+                            <span class="text-xs font-bold text-brandRed uppercase tracking-wider">Ejercicio Práctico #1</span>
+                            <h2 class="text-xl font-black text-slate-900 font-heading">Identificador de los 4 Niveles de Escucha</h2>
+                            <p class="text-xs text-slate-500">Analiza las frases emitidas en la empresa de Carlos y selecciona a qué nivel de escucha corresponde cada una.</p>
+                        </div>
+                        <div id="listening-score-badge" class="bg-slate-100 text-slate-700 px-4 py-1.5 rounded-full text-xs font-bold border border-slate-200">
+                            Puntuación: <span id="score-val">0</span> / 4
+                        </div>
+                    </div>
+
+                    <!-- LISTENING CARDS QUIZ (RANDOMIZED ORDER) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        
+                        <!-- ITEM 1 (Empática - Answer 3) -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Frase A - Carlos (Gerente en cambio)</span>
+                                <p class="text-xs font-medium text-slate-800 italic mb-3 bg-white p-2.5 rounded border border-slate-200">
+                                    "Me senté al lado de los asesores a escuchar sus llamadas. Sentí la ansiedad de ser presionados por el reloj mientras intentaban calmar a un cliente frustrado."
+                                </p>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-600 mb-1">Selecciona el Nivel de Escucha:</label>
+                                <select onchange="checkListening(1, this.value)" class="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 font-medium focus:ring-2 focus:ring-brandRed outline-none">
+                                    <option value="">-- Seleccionar --</option>
+                                    <option value="1">Nivel 1: Descarga (Habitual / Prejuicio)</option>
+                                    <option value="2">Nivel 2: Factual (Basada en datos nuevos)</option>
+                                    <option value="3">Nivel 3: Empática (Desde el sentir del otro)</option>
+                                    <option value="4">Nivel 4: Generativa (Co-creación del futuro)</option>
+                                </select>
+                                <div id="feedback-1" class="mt-2 text-[11px] hidden font-semibold"></div>
+                            </div>
+                        </div>
+
+                        <!-- ITEM 2 (Descarga - Answer 1) -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Frase B - Dirección General</span>
+                                <p class="text-xs font-medium text-slate-800 italic mb-3 bg-white p-2.5 rounded border border-slate-200">
+                                    "Ya sabemos que la gente hoy no tiene paciencia. Solo hay que recortar el tiempo de llamada y apretar las métricas como siempre se ha hecho."
+                                </p>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-600 mb-1">Selecciona el Nivel de Escucha:</label>
+                                <select onchange="checkListening(2, this.value)" class="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 font-medium focus:ring-2 focus:ring-brandRed outline-none">
+                                    <option value="">-- Seleccionar --</option>
+                                    <option value="1">Nivel 1: Descarga (Habitual / Prejuicio)</option>
+                                    <option value="2">Nivel 2: Factual (Basada en datos nuevos)</option>
+                                    <option value="3">Nivel 3: Empática (Desde el sentir del otro)</option>
+                                    <option value="4">Nivel 4: Generativa (Co-creación del futuro)</option>
+                                </select>
+                                <div id="feedback-2" class="mt-2 text-[11px] hidden font-semibold"></div>
+                            </div>
+                        </div>
+
+                        <!-- ITEM 3 (Generativa - Answer 4) -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Frase C - Sesión de Co-Diseño</span>
+                                <p class="text-xs font-medium text-slate-800 italic mb-3 bg-white p-2.5 rounded border border-slate-200">
+                                    "Juntos descubrimos que si rediseñamos la pantalla del asesor y les damos autonomía para resolver sin escalar, transformaremos la atención bancaria en un servicio humano."
+                                </p>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-600 mb-1">Selecciona el Nivel de Escucha:</label>
+                                <select onchange="checkListening(3, this.value)" class="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 font-medium focus:ring-2 focus:ring-brandRed outline-none">
+                                    <option value="">-- Seleccionar --</option>
+                                    <option value="1">Nivel 1: Descarga (Habitual / Prejuicio)</option>
+                                    <option value="2">Nivel 2: Factual (Basada en datos nuevos)</option>
+                                    <option value="3">Nivel 3: Empática (Desde el sentir del otro)</option>
+                                    <option value="4">Nivel 4: Generativa (Co-creación del futuro)</option>
+                                </select>
+                                <div id="feedback-3" class="mt-2 text-[11px] hidden font-semibold"></div>
+                            </div>
+                        </div>
+
+                        <!-- ITEM 4 (Factual - Answer 2) -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Frase D - Analista de Datos</span>
+                                <p class="text-xs font-medium text-slate-800 italic mb-3 bg-white p-2.5 rounded border border-slate-200">
+                                    "Revisé las estadísticas: el 65% de las llamadas largas no son culpa del asesor, sino de fallas en el sistema web que confunden al cliente."
+                                </p>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold text-slate-600 mb-1">Selecciona el Nivel de Escucha:</label>
+                                <select onchange="checkListening(4, this.value)" class="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 font-medium focus:ring-2 focus:ring-brandRed outline-none">
+                                    <option value="">-- Seleccionar --</option>
+                                    <option value="1">Nivel 1: Descarga (Habitual / Prejuicio)</option>
+                                    <option value="2">Nivel 2: Factual (Basada en datos nuevos)</option>
+                                    <option value="3">Nivel 3: Empática (Desde el sentir del otro)</option>
+                                    <option value="4">Nivel 4: Generativa (Co-creación del futuro)</option>
+                                </select>
+                                <div id="feedback-4" class="mt-2 text-[11px] hidden font-semibold"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="mt-4 flex justify-end">
+                        <button onclick="switchTab('mapping')" class="bg-brandRed hover:bg-brandRedDark text-white font-bold text-xs py-2.5 px-5 rounded-xl transition-colors">
+                            Siguiente Ejercicio: Mapeo de la U <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= SECTION 3: MAPEO U ================= -->
+            <div id="sec-mapping" class="sec-panel hidden transition-all duration-300">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="mb-4 border-b border-slate-100 pb-3">
+                        <span class="text-xs font-bold text-brandRed uppercase tracking-wider">Ejercicio Práctico #2</span>
+                        <h2 class="text-xl font-black text-slate-900 font-heading">El Recorrido de la U en la Empresa</h2>
+                        <p class="text-xs text-slate-500">Asigna cada acción que realizó Carlos a la fase correspondiente del proceso de la Teoría U.</p>
+                    </div>
+
+                    <div class="space-y-3">
+                        
+                        <!-- MAP ITEM 1 (Co-Crear - Answer: co-crear) -->
+                        <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap items-center justify-between gap-3">
+                            <div class="text-xs text-slate-700 font-medium">
+                                <strong class="text-slate-900 block font-bold text-xs mb-0.5">Acción A:</strong>
+                                Diseñan una prueba piloto de 2 semanas con un equipo de 5 asesores con libertad total de tiempo por llamada y una nueva plataforma simplificada.
+                            </div>
+                            <div class="w-full md:w-64 flex-shrink-0">
+                                <select onchange="checkPhaseMap(1, this.value)" class="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 font-medium focus:ring-2 focus:ring-brandRed outline-none">
+                                    <option value="">¿A qué fase pertenece?</option>
+                                    <option value="co-iniciar">1. Co-Iniciar</option>
+                                    <option value="co-sentir">2. Co-Sentir (Co-sensing)</option>
+                                    <option value="presenciacion">3. Presenciación</option>
+                                    <option value="co-crear">4. Co-Crear</option>
+                                    <option value="co-evolucionar">5. Co-Evolucionar</option>
+                                </select>
+                                <div id="map-fb-1" class="text-[10px] mt-1 hidden font-bold"></div>
+                            </div>
+                        </div>
+
+                        <!-- MAP ITEM 2 (Co-Iniciar - Answer: co-iniciar) -->
+                        <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap items-center justify-between gap-3">
+                            <div class="text-xs text-slate-700 font-medium">
+                                <strong class="text-slate-900 block font-bold text-xs mb-0.5">Acción B:</strong>
+                                Carlos detiene las sanciones automáticas y convoca a una reunión abierta sin orden del día fija, prometiendo no buscar culpables sino entender.
+                            </div>
+                            <div class="w-full md:w-64 flex-shrink-0">
+                                <select onchange="checkPhaseMap(2, this.value)" class="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 font-medium focus:ring-2 focus:ring-brandRed outline-none">
+                                    <option value="">¿A qué fase pertenece?</option>
+                                    <option value="co-iniciar">1. Co-Iniciar</option>
+                                    <option value="co-sentir">2. Co-Sentir (Co-sensing)</option>
+                                    <option value="presenciacion">3. Presenciación</option>
+                                    <option value="co-crear">4. Co-Crear</option>
+                                    <option value="co-evolucionar">5. Co-Evolucionar</option>
+                                </select>
+                                <div id="map-fb-2" class="text-[10px] mt-1 hidden font-bold"></div>
+                            </div>
+                        </div>
+
+                        <!-- MAP ITEM 3 (Co-Evolucionar - Answer: co-evolucionar) -->
+                        <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap items-center justify-between gap-3">
+                            <div class="text-xs text-slate-700 font-medium">
+                                <strong class="text-slate-900 block font-bold text-xs mb-0.5">Acción C:</strong>
+                                Tras el éxito de la prueba piloto, la dirección presenta la nueva cultura de servicio empático a todas las sucursales del país.
+                            </div>
+                            <div class="w-full md:w-64 flex-shrink-0">
+                                <select onchange="checkPhaseMap(3, this.value)" class="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 font-medium focus:ring-2 focus:ring-brandRed outline-none">
+                                    <option value="">¿A qué fase pertenece?</option>
+                                    <option value="co-iniciar">1. Co-Iniciar</option>
+                                    <option value="co-sentir">2. Co-Sentir (Co-sensing)</option>
+                                    <option value="presenciacion">3. Presenciación</option>
+                                    <option value="co-crear">4. Co-Crear</option>
+                                    <option value="co-evolucionar">5. Co-Evolucionar</option>
+                                </select>
+                                <div id="map-fb-3" class="text-[10px] mt-1 hidden font-bold"></div>
+                            </div>
+                        </div>
+
+                        <!-- MAP ITEM 4 (Co-Sentir - Answer: co-sentir) -->
+                        <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap items-center justify-between gap-3">
+                            <div class="text-xs text-slate-700 font-medium">
+                                <strong class="text-slate-900 block font-bold text-xs mb-0.5">Acción D:</strong>
+                                Carlos acompaña a los ejecutivos durante llamadas difíciles en el call center para sentir la presión real y hablar directamente con los clientes afectados.
+                            </div>
+                            <div class="w-full md:w-64 flex-shrink-0">
+                                <select onchange="checkPhaseMap(4, this.value)" class="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 font-medium focus:ring-2 focus:ring-brandRed outline-none">
+                                    <option value="">¿A qué fase pertenece?</option>
+                                    <option value="co-iniciar">1. Co-Iniciar</option>
+                                    <option value="co-sentir">2. Co-Sentir (Co-sensing)</option>
+                                    <option value="presenciacion">3. Presenciación</option>
+                                    <option value="co-crear">4. Co-Crear</option>
+                                    <option value="co-evolucionar">5. Co-Evolucionar</option>
+                                </select>
+                                <div id="map-fb-4" class="text-[10px] mt-1 hidden font-bold"></div>
+                            </div>
+                        </div>
+
+                        <!-- MAP ITEM 5 (Presenciación - Answer: presenciacion) -->
+                        <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap items-center justify-between gap-3">
+                            <div class="text-xs text-slate-700 font-medium">
+                                <strong class="text-slate-900 block font-bold text-xs mb-0.5">Acción E:</strong>
+                                Carlos hace un retiro de silencio personal para soltar la necesidad de controlar todo mediante métricas y conectar con el propósito humano del servicio.
+                            </div>
+                            <div class="w-full md:w-64 flex-shrink-0">
+                                <select onchange="checkPhaseMap(5, this.value)" class="w-full text-xs bg-white border border-slate-300 rounded-lg p-2 font-medium focus:ring-2 focus:ring-brandRed outline-none">
+                                    <option value="">¿A qué fase pertenece?</option>
+                                    <option value="co-iniciar">1. Co-Iniciar</option>
+                                    <option value="co-sentir">2. Co-Sentir (Co-sensing)</option>
+                                    <option value="presenciacion">3. Presenciación</option>
+                                    <option value="co-crear">4. Co-Crear</option>
+                                    <option value="co-evolucionar">5. Co-Evolucionar</option>
+                                </select>
+                                <div id="map-fb-5" class="text-[10px] mt-1 hidden font-bold"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="mt-4 flex justify-end">
+                        <button onclick="switchTab('canvas')" class="bg-brandRed hover:bg-brandRedDark text-white font-bold text-xs py-2.5 px-5 rounded-xl transition-colors">
+                            Ir al Canvas de Reflexión Grupal <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= SECTION 4: CANVAS REFLEXION ================= -->
+            <div id="sec-canvas" class="sec-panel hidden transition-all duration-300">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="flex flex-wrap justify-between items-center mb-4 border-b border-slate-100 pb-3 gap-2">
+                        <div>
+                            <span class="text-xs font-bold text-brandRed uppercase tracking-wider">Ejercicio Práctico #3 • Entrega de Clase</span>
+                            <h2 class="text-xl font-black text-slate-900 font-heading">Canvas de Liderazgo Empático (Aperturas de la U)</h2>
+                            <p class="text-xs text-slate-500">Completen los campos en equipo. Al finalizar podrán copiar su síntesis para presentar en clase.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="copyCanvasSummary()" class="bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold py-2 px-3.5 rounded-lg shadow transition-colors flex items-center">
+                                <i class="fa-solid fa-copy mr-1.5"></i> Copiar Resumen
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- INPUT FORM GRID -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        
+                        <!-- COLUMN 1: OPENING MIND -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center space-x-2 text-brandRed font-bold text-xs uppercase mb-2">
+                                    <i class="fa-solid fa-brain text-base"></i>
+                                    <span>1. Apertura de Mente</span>
+                                </div>
+                                <label class="block text-xs font-bold text-slate-800 mb-1">Suspender Juicios Previos:</label>
+                                <p class="text-[11px] text-slate-500 mb-2">¿Qué suposiciones o prejuicios automáticos debe suspender el líder ante esta crisis?</p>
+                                <textarea id="input-mind" rows="5" placeholder="Escribe aquí las reflexiones del equipo sobre qué juicios se deben suspender..." class="w-full text-xs p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brandRed outline-none bg-white custom-scrollbar"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- COLUMN 2: OPENING HEART -->
+                        <div class="bg-brandRedLight/40 p-4 rounded-xl border border-brandRed/20 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center space-x-2 text-brandRed font-bold text-xs uppercase mb-2">
+                                    <i class="fa-solid fa-heart text-base"></i>
+                                    <span>2. Apertura de Corazón</span>
+                                </div>
+                                <label class="block text-xs font-bold text-slate-800 mb-1">Empatía Profunda:</label>
+                                <p class="text-[11px] text-slate-500 mb-2">¿Con qué emociones y realidades no visibles (de colaboradores y clientes) debe conectar el líder?</p>
+                                <textarea id="input-heart" rows="5" placeholder="Escribe aquí cómo se conectarán con las emociones y vivencias del equipo..." class="w-full text-xs p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brandRed outline-none bg-white custom-scrollbar"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- COLUMN 3: OPENING WILL -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center space-x-2 text-brandRed font-bold text-xs uppercase mb-2">
+                                    <i class="fa-solid fa-compass text-base"></i>
+                                    <span>3. Apertura de Voluntad</span>
+                                </div>
+                                <label class="block text-xs font-bold text-slate-800 mb-1">Soltar y Co-Crear:</label>
+                                <p class="text-[11px] text-slate-500 mb-2">¿Qué hábitos de control antiguos se deben "dejar ir" para permitir que emerja lo nuevo?</p>
+                                <textarea id="input-will" rows="5" placeholder="Escribe aquí qué patrones antiguos van a soltar para dar espacio a la innovación..." class="w-full text-xs p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brandRed outline-none bg-white custom-scrollbar"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- TEAM & ACTION PLAN ROW -->
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-12 gap-4">
+                        <div class="md:col-span-4 bg-slate-100 p-3.5 rounded-xl border border-slate-200">
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Nombre del Equipo / Integrantes:</label>
+                            <input id="input-team" type="text" placeholder="Ej. Equipo 3 - María, Juan, Sofía..." class="w-full text-xs p-2.5 border border-slate-300 rounded-lg bg-white outline-none focus:ring-2 focus:ring-brandRed">
+                        </div>
+                        <div class="md:col-span-8 bg-slate-100 p-3.5 rounded-xl border border-slate-200">
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Prototipo de Acción Co-Creado (Solución de 1er paso):</label>
+                            <input id="input-proto" type="text" placeholder="Ej. Prototipar un comité semanal de escucha activa sin métricas de tiempo durante 14 días..." class="w-full text-xs p-2.5 border border-slate-300 rounded-lg bg-white outline-none focus:ring-2 focus:ring-brandRed">
+                        </div>
+                    </div>
+
+                    <!-- NOTIFICATION TOAST -->
+                    <div id="toast-msg" class="mt-3 hidden p-3 bg-emerald-600 text-white text-xs font-bold rounded-xl text-center shadow-lg">
+                        <i class="fa-solid fa-circle-check mr-1"></i> ¡Resumen copiado al portapapeles! Listo para pegar en tu presentación o documento.
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="bg-white border-t border-slate-200 px-6 py-3 flex flex-wrap justify-between items-center text-xs text-slate-500 gap-2">
+            <div>
+                <span class="font-bold text-slate-800">Unidad 5: Modelos de Toma de Decisión</span>
+                <span>• Liderazgo Empático con Teoría U</span>
+            </div>
+            <div class="font-semibold text-brandRed">
+                <span>"Del Ego al Eco"</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // TAB SWITCHING
+        function switchTab(tabId) {
+            document.querySelectorAll('.sec-panel').forEach(panel => panel.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-brandRed', 'text-white', 'font-semibold', 'shadow');
+                btn.classList.add('text-slate-300');
+            });
+
+            document.getElementById('sec-' + tabId).classList.remove('hidden');
+            const activeTab = document.getElementById('tab-' + tabId);
+            activeTab.classList.add('bg-brandRed', 'text-white', 'font-semibold', 'shadow');
+            activeTab.classList.remove('text-slate-300');
+        }
+
+        // LISTENING QUIZ LOGIC (RANDOMIZED ANSWERS MAPPED TO NEW QUESTIONS ORDER)
+        const listeningAnswers = {
+            1: { correct: "3", msg: "¡Correcto! Es Nivel 3 (Empática), conecta emocionalmente situándose en el lugar del otro." },
+            2: { correct: "1", msg: "¡Correcto! Es Nivel 1 (Descarga), basada en juicios preexistentes y soluciones del pasado." },
+            3: { correct: "4", msg: "¡Correcto! Es Nivel 4 (Generativa), permite conectar con el futuro emergente y co-crear lo nuevo." },
+            4: { correct: "2", msg: "¡Correcto! Es Nivel 2 (Factual), se enfoca en observar datos objetivos que desafían las creencias previas." }
+        };
+
+        let currentScore = 0;
+        let answeredQuestions = {};
+
+        function checkListening(qNum, selectedVal) {
+            const fbElem = document.getElementById('feedback-' + qNum);
+            const data = listeningAnswers[qNum];
+
+            fbElem.classList.remove('hidden', 'text-emerald-600', 'text-red-600');
+
+            if (selectedVal === data.correct) {
+                fbElem.innerText = data.msg;
+                fbElem.classList.add('text-emerald-600');
+                if (!answeredQuestions[qNum]) {
+                    currentScore++;
+                    answeredQuestions[qNum] = true;
+                }
+            } else {
+                fbElem.innerText = "Incorrecto. Revisa las características de este nivel e inténtalo de nuevo.";
+                fbElem.classList.add('text-red-600');
+                if (answeredQuestions[qNum]) {
+                    currentScore--;
+                    answeredQuestions[qNum] = false;
+                }
+            }
+
+            document.getElementById('score-val').innerText = currentScore;
+        }
+
+        // PHASE MAP QUIZ LOGIC (RANDOMIZED ANSWERS MAPPED TO NEW ACTIONS ORDER)
+        const phaseAnswers = {
+            1: { correct: "co-crear", label: "4. Co-Crear (Prototipar soluciones a pequeña escala)" },
+            2: { correct: "co-iniciar", label: "1. Co-Iniciar (Detener reacciones automáticas y abrir el diálogo)" },
+            3: { correct: "co-evolucionar", label: "5. Co-Evolucionar (Escalar e institucionalizar el cambio)" },
+            4: { correct: "co-sentir", label: "2. Co-Sentir (Sumergirse en la realidad real del campo de trabajo)" },
+            5: { correct: "presenciacion", label: "3. Presenciación (Conectar con el propósito y soltar el control)" }
+        };
+
+        function checkPhaseMap(num, selectedVal) {
+            const fbElem = document.getElementById('map-fb-' + num);
+            const data = phaseAnswers[num];
+            fbElem.classList.remove('hidden', 'text-emerald-600', 'text-red-600');
+
+            if (selectedVal === data.correct) {
+                fbElem.innerText = "¡Correcto! -> " + data.label;
+                fbElem.classList.add('text-emerald-600');
+            } else {
+                fbElem.innerText = "Intenta de nuevo. Piensa en el orden del proceso de la U.";
+                fbElem.classList.add('text-red-600');
+            }
+        }
+
+        // COPY SUMMARY FOR CLASS PRESENTATION
+        function copyCanvasSummary() {
+            const team = document.getElementById('input-team').value || 'Sin especificar';
+            const mind = document.getElementById('input-mind').value || 'Sin respuesta';
+            const heart = document.getElementById('input-heart').value || 'Sin respuesta';
+            const will = document.getElementById('input-will').value || 'Sin respuesta';
+            const proto = document.getElementById('input-proto').value || 'Sin respuesta';
+
+            const summaryText = `
+==================================================
+CANVAS DE LIDERAZGO EMPÁTICO - TEORÍA U (CASO CARLOS)
+==================================================
+Equipo: ${team}
+
+1. APERTURA DE MENTE (Suspender Juicios):
+${mind}
+
+2. APERTURA DE CORAZÓN (Empatía Profunda):
+${heart}
+
+3. APERTURA DE VOLUNTAD (Soltar y Co-Crear):
+${will}
+
+PROTOTIPO DE ACCIÓN INICIAL:
+${proto}
+==================================================
+`.trim();
+
+            // Fallback clipboard logic per instructions
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = summaryText;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            
+            try {
+                document.execCommand('copy');
+                const toast = document.getElementById('toast-msg');
+                toast.classList.remove('hidden');
+                setTimeout(() => toast.classList.add('hidden'), 4000);
+            } catch (err) {
+                console.error('Error al copiar', err);
+            }
+            
+            document.body.removeChild(tempTextArea);
+        }
+    </script>
+</body>
+</html>
